@@ -9,9 +9,11 @@ I will be dividing the architecture into four stages
 
 ## Stage 1: MIGRATING THE SQL SERVER CLUSTER TO RDS
 
-![alt text](https://github.com/Yingi/AWS-Migration/blob/main/Stage1.png?raw=true)
-
 WE will have to migrate the database layer of the application to an instance running Windows Server 2016 on AWS
+
+![alt text](https://github.com/Yingi/AWS-Migration/blob/main/Stage101.jpg?raw=true)
+
+
 
 Here are technical steps that can be used to migrate a shared database running on Windows Server 2008 R2 to an AWS cloud database running Windows Server 2016:
 
@@ -42,6 +44,9 @@ Here are technical steps that can be used to migrate a shared database running o
 
 WE will have to migrate the application layer of the application to an instance running Windows Server 2016 on AWS
 
+![alt text](https://github.com/Yingi/AWS-Migration/blob/main/Stage102.jpg?raw=true)
+
+
 * Set up an AWS Application Discovery Service (ADS) agent on the source Windows Server 2006 machine to inventory the application and dependencies.
 
 * Create IAM user for AWS Replication Agent
@@ -63,7 +68,8 @@ WE will have to migrate the application layer of the application to an instance 
 
 We will integrate on-premises SAP ERP and SAP PI middleware with the migrated application using Amazon API Gateway
 
-< images> 
+![alt text](https://github.com/Yingi/AWS-Migration/blob/main/Stage103.jpg?raw=true)
+
 
 * Create a VPC Endpoint or establish a VPN connection between your on-premises data center and AWS VPC to allow your application to securely access the on-premises systems.
 
