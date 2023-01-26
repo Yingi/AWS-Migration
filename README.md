@@ -1,3 +1,4 @@
+<font size="5"> 
 Below is the Solution approach on the architecture i will consider
 
 I will be dividing the architecture into four stages
@@ -111,7 +112,7 @@ The external database applications are integrated with the shared database throu
 * For the integration with the external databases, you can use the Database Migration Service (DMS) that allows you to replicate and migrate data from a source database, like your on-premise SQL Server, to a target database in AWS.
 
 * Once the migration is complete, monitor the performance of the RDS instances or Aurora cluster, and troubleshoot as needed.
-
+</font>
 
 
 
