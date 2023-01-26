@@ -1,0 +1,71 @@
+As an AWS solutions architect, taking the below details into consideration, how will you migrate this legacy application to the cloud
+
+Application: 
+1. The application is regarded as legacy and runs on Windows Server 2008. 
+2. It integrates through web services via SAP PI middleware to SAP ERP component. 
+3. App Server Name: iPlan321.
+
+
+Database Layer:
+SQL Cluster Server, running on a shared database with other external systems.
+- The database is SQL Server 2008 R2, which has accumulated 16 TB of data over many
+years.
+- Integrates to external OnPrem systems, mostly at database level, through complex SQL
+queries, SQL stored procedures and SQL jobs.
+- Database Server Name: PLAN DATABASE.
+
+
+External applications:
+o SAP ERP, SAP middleware (webservice integration with iPLAN321)
+o ADVANCED DEMAND (SQL integration, Database Server Name: PLAN DATABASE)
+o ADVANCED STOCK (SQL integration, Database Server Name: ADVS DATABASE)
+o ADVANCED PRODUCTION (SQL integration, Database Server Name: PLAN DATABASE) o STATS (SQL integration, Database Server Name: PLAN DATABASE)
+As an AWS solutions architect, my approach for migrating this legacy application to the cloud would involve the following steps:
+
+Assess the application: Understand the requirements, dependencies, and functionalities of the legacy application iPlan321. Identify any potential roadblocks or challenges that may arise during the migration process.
+
+Plan the migration: Create a detailed migration plan that outlines the steps required to move the application and its data to the cloud. This plan should take into consideration the application's dependencies on other systems, such as SAP ERP and SQL Server 2008 R2.
+
+Migrate the application: Use AWS Application Discovery Service to map the dependencies and configurations of the legacy application.
+AWS Server Migration Service(SMS) to migrate the application to the cloud.
+
+Migrate the database: Use AWS Database Migration Service (DMS) to migrate the 16 TB of data from the SQL Server 2008 R2 database to an Amazon RDS for SQL Server or Aurora.
+
+Test and validate: Perform testing and validation of the migrated application and database to ensure that they are working as expected in the cloud.
+
+Optimize and Monitor: Optimize the performance of the application and database in the cloud. Use AWS CloudWatch to monitor the application and database for any potential issues.
+
+Optimize the integration: Optimize the integration between the migrated application and external systems, such as SAP ERP and ADVANCED DEMAND, by using AWS integration services like AWS AppSync or AWS Glue.
+
+Finally, update the integration with external systems with the new endpoint and test the integration again.
+
+It is a high-level approach and there might be other considerations that might come into play based on the application's specific requirements.
+
+
+
+
+yingi keme
+How will you create a detailed migration plan given the application dependencies on other systems, such as SAP ERP and SQL Server 2008 R2.
+Creating a detailed migration plan for this legacy application would involve the following steps:
+
+Identify the dependencies: Understand the dependencies of the legacy application iPlan321 on other systems, such as SAP ERP and SQL Server 2008 R2. This includes identifying the web services that are used to integrate with SAP PI middleware, as well as the SQL queries, stored procedures, and jobs that are used to integrate with external systems like ADVANCED DEMAND, ADVANCED STOCK, ADVANCED PRODUCTION, and STATS.
+
+Identify the data flow: Understand the data flow between the legacy application and the other systems it depends on. This includes identifying the data that is stored in the SQL Server 2008 R2 database and how it is used by the legacy application, as well as the data that is exchanged between the legacy application and other systems through web services or SQL queries.
+
+Identify the migration options: Identify the migration options available for moving the legacy application and its data to the cloud. This includes evaluating different options for migrating the application, such as using AWS SMS, and different options for migrating the database, such as using AWS DMS or AWS Database Migration Service (DMS).
+
+Identify the integration options: Identify the integration options available for connecting the migrated application and its data to other systems in the cloud. This includes evaluating different options for integrating the application with external systems through web services or SQL queries, such as using AWS AppSync or AWS Glue.
+
+Create a timeline: Create a timeline for the migration, including milestones and deadlines for each step of the migration process. This timeline should take into consideration any dependencies on other systems and any constraints that may impact the migration.
+
+Test and validation plan: Create a test and validation plan that outlines the steps required to test and validate the migrated application and its data in the cloud. This plan should include testing the application's functionality, performance, and security, as well as testing the integration with other systems.
+
+Monitoring and Optimization plan: Create a plan for monitoring and optimizing the performance of the application and its data in the cloud. This plan should include setting up monitoring and logging using AWS CloudWatch and AWS CloudTrail, as well as identifying opportunities for optimizing the performance of the application and its data in the cloud.
+
+Rollback and disaster recovery plan: Create a rollback and disaster recovery plan that outlines the steps required to recover the application in case of any issues during the migration process. This plan should include steps for rolling back the migration and restoring the application to its previous state, as well as steps for recovering the application in case of a disaster.
+
+It is important to review the plan with the relevant teams, as well as to include contingencies and fallback plans in case something goes wrong during the migration.
+
+
+
+
