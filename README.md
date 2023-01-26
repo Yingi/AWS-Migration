@@ -9,7 +9,7 @@ I will be dividing the architecture into four stages
 
 ## Stage 1: MIGRATING THE SQL SERVER CLUSTER TO RDS
 
-<image>
+![alt text](https://github.com/Yingi/AWS-Migration/blob/main/Stage1.png?raw=true)
 
 WE will have to migrate the database layer of the application to an instance running Windows Server 2016 on AWS
 
