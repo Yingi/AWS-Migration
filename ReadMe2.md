@@ -98,11 +98,11 @@ Here are the steps we can take to configure the web service to ensure proper int
 
 * Configure the SAP PI middleware: The SAP PI middleware acts as a bridge between the containerized application and the on-premise SAP system. We will need to configure the SAP PI middleware to ensure that it can communicate with the web service in the containerized application. This may involve configuring the web service endpoint, setting up security credentials, and making any necessary code changes to the SAP PI middleware.
 
-Test the integration: Once the web service and SAP PI middleware are configured, we will test the integration to ensure that the containerized application and on-premise SAP system can communicate properly. This may involve sending test messages or data between the two systems to ensure that they are properly configured.
+* Test the integration: Once the web service and SAP PI middleware are configured, we will test the integration to ensure that the containerized application and on-premise SAP system can communicate properly. This may involve sending test messages or data between the two systems to ensure that they are properly configured.
 
-Configure the appropriate security measures: It's important to configure appropriate security measures to protect the communication between the containerized application and the on-premise SAP. This may include setting up firewalls, VPNs, or other security protocols to ensure that only authorized communication is allowed.
+* Configure the appropriate security measures: It's important to configure appropriate security measures to protect the communication between the containerized application and the on-premise SAP. This may include setting up firewalls, VPNs, or other security protocols to ensure that only authorized communication is allowed.
 
-Monitor the integration: Once the integration is set up, we will have to monitor the communication between the containerized application and the on-premise SAP to ensure that it is running smoothly. This may involve setting up monitoring and logging to detect and troubleshoot any issues that may arise.
+* Monitor the integration: Once the integration is set up, we will have to monitor the communication between the containerized application and the on-premise SAP to ensure that it is running smoothly. This may involve setting up monitoring and logging to detect and troubleshoot any issues that may arise.
 
 The integration process might require some adjustments to the application, such as updating libraries, drivers, and configurations, to make sure the application is compatible with the on-premise SAP.
 
