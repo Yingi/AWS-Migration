@@ -1,6 +1,6 @@
 <font size="5"> Below is the Solution approach on the architecture i will consider
 
-I will be dividing the architecture into four stages
+I will be dividing the architecture into Six stages
 
 * Stage 1: CONTAINERIZE THE APPLICATION LAYER
 * Stage 2: MIGRATE THE DATABASE LAYER TO AN UPGRADED SQL SERVER CLUSTER (2016) IN THE CLOUD
