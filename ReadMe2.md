@@ -60,6 +60,7 @@ Here are technical steps that can be used to migrate a shared database running o
 
 We will deploy our application container image to the Kubernetes Cluster
 
+![alt text](https://github.com/Yingi/AWS-Migration/blob/main/Stage4.jpg?raw=true)
 
 
 * Create a Kubernetes cluster: You can use a service such as Amazon Elastic Kubernetes Service (EKS) or Google Kubernetes Engine (GKE) to create a Kubernetes cluster in the cloud.
