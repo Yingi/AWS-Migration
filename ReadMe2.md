@@ -66,7 +66,7 @@ We will deploy our application container image to the Kubernetes Cluster
 * Create a Kubernetes cluster: You can use a service such as Amazon Elastic Kubernetes Service (EKS) or Google Kubernetes Engine (GKE) to create a Kubernetes cluster in the cloud.
 
 
-* Create a Kubernetes deployment: Use a Kubernetes deployment file, such as a YAML file, to define the desired state of your application in the cluster. This will include things like the number of replicas, resource requirements, and the container image to use.
+* Create a Kubernetes deployment: Use a Kubernetes deployment file, such as a YAML file, to define the desired state of the application in the cluster. This will include things like the number of replicas, resource requirements, and the container image to use.
 
 * Create a Kubernetes service: Create a Kubernetes service to expose the application to the network. This will create an endpoint for the application that can be accessed by external clients.
 
@@ -94,7 +94,7 @@ OR
 
 Here are the steps we can take to configure the web service to ensure proper integration between the containerized application and the on-premise SAP:
 
-* Configure the web service in the containerized application: You will need to configure the web service in the containerized application to allow it to communicate with the on-premise SAP system. This may involve configuring the web service endpoint, setting up security credentials, and making any necessary code changes to the application.
+* Configure the web service in the containerized application: We will need to configure the web service in the containerized application to allow it to communicate with the on-premise SAP system. This may involve configuring the web service endpoint, setting up security credentials, and making any necessary code changes to the application.
 
 * Configure the SAP PI middleware: The SAP PI middleware acts as a bridge between the containerized application and the on-premise SAP system. We will need to configure the SAP PI middleware to ensure that it can communicate with the web service in the containerized application. This may involve configuring the web service endpoint, setting up security credentials, and making any necessary code changes to the SAP PI middleware.
 
