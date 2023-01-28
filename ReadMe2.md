@@ -19,7 +19,7 @@ WE will have to containerize the application using Docker and ensure that it use
 
 
 * Create a new Windows Server 2016 base image: We will need to create a new base image of Windows Server 2016 that will be used to build the container. We will use Docker
-* Install the application on the new base image: Once we have created the new base image, we can install the application on it. we will need to make sure that all the necessary dependencies, libraries, and configurations are in place for the application to run properly.
+* Install the application on the new base image: Once we have created the new base image, we can install the application on it. We will copy the application files from the existing Windows Server 2008 environment to the new Windows Server 2016 base image. We will need to make sure that all the necessary dependencies, libraries, and configurations are in place for the application to run properly.
 * Create a container from the image: Once the application is installed on the new base image, we can use Docker to create a container from the image. This will package the application and its dependencies into a single, portable container.
 * Push the container image: Push container image to container registry such as Docker Hub or Google Container Registry.
 * We may need to make some adjustments to the application, such as updating libraries, drivers, and configurations, to make sure the application is compatible with Windows Server 2016.
