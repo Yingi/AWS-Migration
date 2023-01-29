@@ -1,4 +1,4 @@
-<font size="5"> Below is the Solution approach on the architecture i will consider
+<font size="4"> Below is the Solution approach on the architecture i will consider
 
 I will be dividing the architecture into Six stages
 
@@ -9,6 +9,9 @@ I will be dividing the architecture into Six stages
 * Stage 5: INTEGRATE ON-PREMISE SAP ERP TO THE CONTAINERIZED APPLICATION IN THE CLOUD
 * Stage 6: MIGRATING THE EXTERNAL DATABASE APLLICTATIONS
 
+* SECURITY, AVAILABILITY AND DISASTER RECOVERY ARCHITECTURE
+
+<br/><br/>
 
 LETS BEGIN
 
@@ -25,7 +28,7 @@ WE will have to containerize the application using Docker and ensure that it use
 * We may need to make some adjustments to the application, such as updating libraries, drivers, and configurations, to make sure the application is compatible with Windows Server 2016.
 
 
-
+<br/><br/>
 
 
 ## STAGE 2: MIGRATE THE DATABASE LAYER TO AN UPGRADED SQL SERVER CLUSTER (2016) IN THE CLOUD
@@ -54,7 +57,7 @@ Here are technical steps that can be used to migrate a shared database running o
 * Once the migration is complete, run validation tests to ensure that the data in the target RDS instance is accurate and consistent with the source database.
 
 
-
+<br/><br/>
 
 ## STAGE 3: DEPLOY THE CONTAINERIZED APPLICATION TO A KUBERNETES CLUSTER
 
@@ -77,7 +80,7 @@ We will deploy our application container image to the Kubernetes Cluster
 * Monitor the application: Use Kubernetes built-in monitoring and logging functionality or external tools to monitor the application and troubleshoot any issues that may arise.
 
 
-
+<br/><br/>
 
 ## STAGE 4: INTEGRATE THE CONTAINERIZED APPLICATION TO THE SQL SERVER 2016 INSTANCE
 
@@ -89,7 +92,8 @@ OR
 
 * Use a service discovery tool: Kubernetes, for example, provides a service discovery tool that can be used to automatically discover and connect to the SQL Server instance. This would allow the application to connect to the SQL Server instance without hardcoding the connection string.
 
-
+<br/><br/>
+  
 ## STAGE 5: INTEGRATE ON-PREMISE SAP ERP TO THE CONTAINERIZED APPLICATION IN THE CLOUD
 
 Here are the steps we can take to configure the web service to ensure proper integration between the containerized application and the on-premise SAP:
@@ -104,9 +108,9 @@ Here are the steps we can take to configure the web service to ensure proper int
 
 * Monitor the integration: Once the integration is set up, we will have to monitor the communication between the containerized application and the on-premise SAP to ensure that it is running smoothly. This may involve setting up monitoring and logging to detect and troubleshoot any issues that may arise.
 
-The integration process might require some adjustments to the application, such as updating libraries, drivers, and configurations, to make sure the application is compatible with the on-premise SAP.
+* The integration process might require some adjustments to the application, such as updating libraries, drivers, and configurations, to make sure the application is compatible with the on-premise SAP.
 
-
+<br/><br/>
 
 ## STAGE 6: MIGRATING THE EXTERNAL DATABASE APLLICTATIONS
 
@@ -127,6 +131,97 @@ The external database applications are integrated with the shared database throu
 * For the integration with the external databases, you can use the Database Migration Service (DMS) that allows you to replicate and migrate data from a source database, like the on-premise SQL Server, to a target database in AWS.
 
 * Once the migration is complete, monitor the performance of the RDS instances or Aurora cluster, and troubleshoot as needed.
+
+<br/><br/>
+
+## SECURITY, AVAILABILITY AND DISASTER RECOVERY ARCHITECTURE
+
+### Security (WAF and AWS SHEILD):
+
+![alt text](https://github.com/Yingi/AWS-Migration/blob/main/Security.jpg?raw=true)
+
+We will need to add Web Application Firewall (WAF) and AWS Shield to our application to protect against common exploits and Denial of Service DDOS attack, We will follow these general steps:
+
+1. Create a Kubernetes service of type LoadBalancer or NodePort:
+* We need to expose our application to the internet to be able to protect it with a WAF. We can do this by creating a Kubernetes service of type LoadBalancer or NodePort
+2. Create an Application Load Balancer (ALB) and associate it with the Kubernetes service:
+* Create an Application Load Balancer (ALB) in the same VPC where our Kubernetes cluster is running.
+* Configure the ALB to forward incoming traffic to the Kubernetes service.
+3. Configure a WAF: Create a Web Application Firewall (WAF) using AWS WAF. AWS WAF allows us to create rules to block or allow traffic based on conditions such as IP address, query string, and request headers.
+4. Associate the WAF with the Application Load Balancer (ALB) :
+* associate the WAF with the ALB created in step 2 to protect the application from web attacks.
+5. Enable AWS Shield: AWS Shield is a service that provides DDoS protection for your applications. It can be enabled on our application load balancer.
+6. Configure protection rules:
+* Configure protection rules in our WAF to block malicious requests.
+* Configure protection rules in AWS Shield to block DDoS attacks.
+7. Monitor and troubleshoot: Monitor the WAF and AWS Shield logs to identify any suspicious activity or potential attacks. Use the troubleshooting tools provided by AWS to investigate and resolve any security issues.
+
+Also, for better security, we will also put our database cluster in a private subnet and configure the security group such that only our application layer has access to the database.
+
+It's important to note that while adding a WAF and AWS Shield to our application deployed on kubernetes on AWS can help to make it more secure, it's not 100% secure. It's important to have a well-defined security strategy that includes regular security assessments, testing and monitoring to ensure the overall security of the architecture.
+
+<br/><br/>
+  
+### High Availability:
+
+APPLICATION LAYER:
+
+In the context of a containerized application deployed on a Kubernetes cluster, HA can be achieved by:
+
+* Running multiple replicas of the application pods: By creating multiple replicas of the pods running your application, you can ensure that there are multiple copies of the application running at any given time. If one pod fails, the others can continue serving traffic, ensuring that the application remains available.
+
+* Using a self-healing mechanism: Kubernetes provides self-healing capabilities through its built-in controller manager, which monitors the state of the cluster and takes action to recover failed components. This helps to ensure that the application remains available even if one of its components fails.
+
+* Utilizing network redundancy: Network redundancy can be achieved by configuring multiple network paths between the various components of your cluster, such as multiple network interfaces or multiple routing paths. This helps to ensure that the application remains available even if one of the network components fails.
+
+* Configuring multiple storage options: By configuring multiple storage options, such as multiple storage volumes or multiple storage classes, you can ensure that the application has access to storage even if one of the storage components fails.
+
+
+DATABASE LAYER:
+
+* Making a database cluster highly available (HA) involves ensuring that the database is accessible and operational even in the event of a failure in one of its components. The steps to follow:
+
+* Deploying the database cluster across multiple availability zones: This helps to ensure that the database is available even if an entire availability zone goes offline.
+
+* Utilizing a load balancer: A load balancer can be used to distribute incoming traffic to multiple instances of the database cluster, providing redundancy and ensuring that the database is available even if one of its components fails.
+
+* Configuring automatic failover: Automatic failover helps to ensure that the database is available even if one of its components fails. This can be achieved by configuring a primary and secondary instance of the database, with the secondary instance taking over in the event of a failure of the primary instance.
+
+* Backing up the database regularly: Regular backups help to ensure that the database can be recovered in the event of a failure.
+
+* Monitoring the database cluster: Monitoring the database cluster helps to ensure that potential failures are detected early and that the necessary steps can be taken to prevent or recover from failures.
+
+<br/><br/>
+
+### Disaster Recovery:
+
+We will determine where we need to create our disaster recovery environment. Whether to create a disaster recovery environment in the cloud or on-premise depends on our organization's specific needs and requirements. Both options have their own advantages and disadvantages.
+ 
+Lets compare:
+
+Creating a disaster recovery environment in the cloud has the following advantages:
+* Easy scalability: Cloud environments are highly scalable, and it's easy to increase or decrease the resources as needed.
+* Cost-effective: Cloud providers often offer pay-as-you-go pricing models, which can be more cost-effective than maintaining an on-premise disaster recovery environment.
+* Automatic failover: Some cloud providers offer automatic failover capabilities, which can help minimize downtime in the event of a disaster.
+* Increased availability: Cloud providers often have multiple data centers located in different regions, which can provide increased availability in the event of a disaster.
+
+
+On the other hand, creating a disaster recovery environment on-premise has the following advantages:
+* Greater control: When we maintain an on-premise disaster recovery environment, we have greater control over the infrastructure and can customize it to meet your specific needs.
+* Greater security: we may consider on-premise infrastructure to be more secure, as we have physical control over the equipment and can implement additional security measures.
+* No internet dependency: If the internet connection goes down, the on-premise disaster recovery environment will still be available.
+
+Ultimately, the best approach depends on the specific needs of the organization. We should consider factors such as cost, compliance requirements, recovery time objectives, and data sovereignty laws when making decision.
+
+
+
+
+
+
+
+
+
+
 
 
 </font>
